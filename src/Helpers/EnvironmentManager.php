@@ -5,7 +5,8 @@ namespace XRA\Install\Helpers;
 use Exception;
 use Illuminate\Http\Request;
 
-class EnvironmentManager{
+class EnvironmentManager
+{
     /**
      * @var string
      */
@@ -19,7 +20,8 @@ class EnvironmentManager{
     /**
      * Set the .env and .env.example paths.
      */
-    public function __construct(){
+    public function __construct()
+    {
         $this->envPath = base_path('.env');
         $this->envExamplePath = base_path('.env.example');
     }
@@ -29,7 +31,8 @@ class EnvironmentManager{
      *
      * @return string
      */
-    public function getEnvContent(){
+    public function getEnvContent()
+    {
         if (!file_exists($this->envPath)) {
             if (file_exists($this->envExamplePath)) {
                 copy($this->envExamplePath, $this->envPath);
@@ -46,7 +49,8 @@ class EnvironmentManager{
      *
      * @return string
      */
-    public function getEnvPath() {
+    public function getEnvPath()
+    {
         return $this->envPath;
     }
 
@@ -55,7 +59,8 @@ class EnvironmentManager{
      *
      * @return string
      */
-    public function getEnvExamplePath() {
+    public function getEnvExamplePath()
+    {
         return $this->envExamplePath;
     }
 
@@ -65,13 +70,13 @@ class EnvironmentManager{
      * @param Request $input
      * @return string
      */
-    public function saveFileClassic(Request $input){
+    public function saveFileClassic(Request $input)
+    {
         $message = trans('install::messages.environment.success');
 
         try {
             file_put_contents($this->envPath, $input->get('envConfig'));
-        }
-        catch(Exception $e) {
+        } catch (Exception $e) {
             $message = trans('install::messages.environment.errors');
         }
 
@@ -84,7 +89,8 @@ class EnvironmentManager{
      * @param Request $request
      * @return string
      */
-    public function saveFileWizard(Request $request){
+    public function saveFileWizard(Request $request)
+    {
         $results = trans('install::messages.environment.success');
 
         $envFileData =
@@ -96,7 +102,7 @@ class EnvironmentManager{
         'APP_URL=' . $request->app_url . "\n\n" .
         'DB_CONNECTION=' . $request->database_connection . "\n" .
         'DB_HOST=' . $request->database_hostname . "\n" .
-        'DB_PORT=' . $request->database_port . "\n" . 
+        'DB_PORT=' . $request->database_port . "\n" .
         'DB_DATABASE=' . $request->database_name . "\n" .
         'DB_DATABASE_LU=' . $request->database_lu . "\n" .
         'DB_USERNAME=' . $request->database_username . "\n" .
@@ -123,9 +129,7 @@ class EnvironmentManager{
 
         try {
             file_put_contents($this->envPath, $envFileData);
-
-        }
-        catch(Exception $e) {
+        } catch (Exception $e) {
             $results = trans('install::messages.environment.errors');
         }
 

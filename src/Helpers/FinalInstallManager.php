@@ -6,13 +6,15 @@ use Exception;
 use Illuminate\Support\Facades\Artisan;
 use Symfony\Component\Console\Output\BufferedOutput;
 
-class FinalInstallManager{
+class FinalInstallManager
+{
     /**
      * Run final commands.
      *
      * @return string
      */
-    public function runFinal(){
+    public function runFinal()
+    {
         $outputLog = new BufferedOutput;
 
         $this->generateKey($outputLog);
@@ -27,13 +29,13 @@ class FinalInstallManager{
      * @param \Symfony\Component\Console\Output\BufferedOutput $outputLog
      * @return \Symfony\Component\Console\Output\BufferedOutput|array
      */
-    private static function generateKey(BufferedOutput $outputLog){
-        try{
-            if (config('install.final.key')){
+    private static function generateKey(BufferedOutput $outputLog)
+    {
+        try {
+            if (config('install.final.key')) {
                 Artisan::call('key:generate', ["--force"=> true], $outputLog);
             }
-        }
-        catch(Exception $e){
+        } catch (Exception $e) {
             return static::response($e->getMessage(), $outputLog);
         }
 
@@ -46,13 +48,13 @@ class FinalInstallManager{
      * @param \Symfony\Component\Console\Output\BufferedOutput $outputLog
      * @return \Symfony\Component\Console\Output\BufferedOutput|array
      */
-    private static function publishVendorAssets(BufferedOutput $outputLog){
-        try{
-            if (config('install.final.publish')){
+    private static function publishVendorAssets(BufferedOutput $outputLog)
+    {
+        try {
+            if (config('install.final.publish')) {
                 Artisan::call('vendor:publish', ['--all' => true], $outputLog);
             }
-        }
-        catch(Exception $e){
+        } catch (Exception $e) {
             return static::response($e->getMessage(), $outputLog);
         }
 
@@ -66,7 +68,8 @@ class FinalInstallManager{
      * @param \Symfony\Component\Console\Output\BufferedOutput $outputLog
      * @return array
      */
-    private static function response($message, BufferedOutput $outputLog){
+    private static function response($message, BufferedOutput $outputLog)
+    {
         return [
             'status' => 'error',
             'message' => $message,

@@ -7,6 +7,8 @@ use Intervention\Image\ImageManagerStatic as Image;
 use App\Http\Controllers\Controller;
 
 use XRA\Extend\Traits\CrudSimpleTrait as CrudTrait;
+//--- services
+use XRA\Extend\Services\ThemeService;
 
 class InstallController extends Controller
 {
@@ -15,7 +17,7 @@ class InstallController extends Controller
         if ($request->routelist==1) {
             return ArtisanTrait::exe('route:list');
         }
-        $view=CrudTrait::getView();
+        $view=ThemeService::getView();
         return view($view);
     }//end function
  //

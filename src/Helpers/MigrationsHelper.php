@@ -1,9 +1,11 @@
 <?php
 
 namespace XRA\Install\Helpers;
+
 use Illuminate\Support\Facades\DB;
 
-trait MigrationsHelper {
+trait MigrationsHelper
+{
 
     /**
      * Get the migrations in /database/migrations

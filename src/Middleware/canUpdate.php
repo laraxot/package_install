@@ -28,7 +28,7 @@ class canUpdate
                     return redirect()->route('LaravelInstaller::welcome');
                 }
 
-                if($this->alreadyUpdated()) {
+                if ($this->alreadyUpdated()) {
                     abort(404);
                 }
                 break;
@@ -61,5 +61,4 @@ class canUpdate
         // Continue, the app needs an update
         return false;
     }
-
 }

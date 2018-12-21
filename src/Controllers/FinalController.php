@@ -11,8 +11,8 @@ use XRA\Install\Events\LaravelInstallerFinished;
 //--------   TRAITS   ---------------
 use XRA\Extend\Traits\CrudSimpleTrait as CrudTrait;
 
-
-class FinalController extends Controller{
+class FinalController extends Controller
+{
     /**
      * Update installed file and display finished view.
      *
@@ -21,7 +21,8 @@ class FinalController extends Controller{
      * @param \XRA\Install\Helpers\EnvironmentManager $environment
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function finish(InstalledFileManager $fileManager, FinalInstallManager $finalInstall, EnvironmentManager $environment){
+    public function finish(InstalledFileManager $fileManager, FinalInstallManager $finalInstall, EnvironmentManager $environment)
+    {
         $finalMessages = $finalInstall->runFinal();
         $finalStatusMessage = $fileManager->update();
         $finalEnvFile = $environment->getEnvContent();

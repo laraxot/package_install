@@ -8,8 +8,8 @@ use XRA\Install\Helpers\DatabaseManager;
 //--------   TRAITS   ---------------
 use XRA\Extend\Traits\CrudSimpleTrait as CrudTrait;
 
-
-class DatabaseController extends Controller{
+class DatabaseController extends Controller
+{
     /**
      * @var DatabaseManager
      */
@@ -18,7 +18,8 @@ class DatabaseController extends Controller{
     /**
      * @param DatabaseManager $databaseManager
      */
-    public function __construct(DatabaseManager $databaseManager){
+    public function __construct(DatabaseManager $databaseManager)
+    {
         $this->databaseManager = $databaseManager;
     }
 
@@ -27,7 +28,8 @@ class DatabaseController extends Controller{
      *
      * @return \Illuminate\View\View
      */
-    public function database(){
+    public function database()
+    {
         $response = $this->databaseManager->migrateAndSeed();
         return redirect()->route('LaravelInstaller::final')
                          ->with(['message' => $response]);

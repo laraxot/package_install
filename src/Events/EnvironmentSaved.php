@@ -7,8 +7,8 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
 
-class EnvironmentSaved{
-    
+class EnvironmentSaved
+{
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     private $request;
@@ -19,11 +19,13 @@ class EnvironmentSaved{
      * @param Request $request
      * @return void
      */
-    public function __construct(Request $request){
+    public function __construct(Request $request)
+    {
         $this->request = $request;
     }
 
-    public function getRequest(){
+    public function getRequest()
+    {
         return $this->request;
     }
 }

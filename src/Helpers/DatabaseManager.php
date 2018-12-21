@@ -9,13 +9,15 @@ use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 use Symfony\Component\Console\Output\BufferedOutput;
 
-class DatabaseManager{
+class DatabaseManager
+{
     /**
      * Migrate and seed the database.
      *
      * @return array
      */
-    public function migrateAndSeed(){
+    public function migrateAndSeed()
+    {
         $outputLog = new BufferedOutput;
 
         $this->sqlite($outputLog);
@@ -29,11 +31,11 @@ class DatabaseManager{
      * @param \Symfony\Component\Console\Output\BufferedOutput $outputLog
      * @return array
      */
-    private function migrate(BufferedOutput $outputLog){
-        try{
+    private function migrate(BufferedOutput $outputLog)
+    {
+        try {
             Artisan::call('migrate', ["--force"=> true], $outputLog);
-        }
-        catch(Exception $e){
+        } catch (Exception $e) {
             return $this->response($e->getMessage(), 'error', $outputLog);
         }
 
@@ -46,11 +48,11 @@ class DatabaseManager{
      * @param \Symfony\Component\Console\Output\BufferedOutput $outputLog
      * @return array
      */
-    private function seed(BufferedOutput $outputLog){
-        try{
+    private function seed(BufferedOutput $outputLog)
+    {
+        try {
             Artisan::call('db:seed', ['--force' => true], $outputLog);
-        }
-        catch(Exception $e){
+        } catch (Exception $e) {
             return $this->response($e->getMessage(), 'error', $outputLog);
         }
 
@@ -65,7 +67,8 @@ class DatabaseManager{
      * @param \Symfony\Component\Console\Output\BufferedOutput $outputLog
      * @return array
      */
-    private function response($message, $status = 'danger', BufferedOutput $outputLog){
+    private function response($message, $status = 'danger', BufferedOutput $outputLog)
+    {
         return [
             'status' => $status,
             'message' => $message,
@@ -78,10 +81,11 @@ class DatabaseManager{
      *
      * @param \Symfony\Component\Console\Output\BufferedOutput $outputLog
      */
-    private function sqlite(BufferedOutput $outputLog){
-        if(DB::connection() instanceof SQLiteConnection) {
+    private function sqlite(BufferedOutput $outputLog)
+    {
+        if (DB::connection() instanceof SQLiteConnection) {
             $database = DB::connection()->getDatabaseName();
-            if(!file_exists($database)) {
+            if (!file_exists($database)) {
                 touch($database);
                 DB::reconnect(Config::get('database.default'));
             }

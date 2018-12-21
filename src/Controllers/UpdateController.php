@@ -9,7 +9,6 @@ use XRA\Install\Helpers\DatabaseManager;
 //--------   TRAITS   ---------------
 use XRA\Extend\Traits\CrudSimpleTrait as CrudTrait;
 
-
 class UpdateController extends Controller
 {
     use \XRA\Install\Helpers\MigrationsHelper;

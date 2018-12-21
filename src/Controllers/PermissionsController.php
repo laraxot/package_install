@@ -7,9 +7,11 @@ use XRA\Install\Helpers\PermissionsChecker;
 
 //--------   TRAITS   ---------------
 use XRA\Extend\Traits\CrudSimpleTrait as CrudTrait;
+//--- services
+use XRA\Extend\Services\ThemeService;
 
-
-class PermissionsController extends Controller{
+class PermissionsController extends Controller
+{
 
     /**
      * @var PermissionsChecker
@@ -19,7 +21,8 @@ class PermissionsController extends Controller{
     /**
      * @param PermissionsChecker $checker
      */
-    public function __construct(PermissionsChecker $checker){
+    public function __construct(PermissionsChecker $checker)
+    {
         $this->permissions = $checker;
     }
 
@@ -28,11 +31,12 @@ class PermissionsController extends Controller{
      *
      * @return \Illuminate\View\View
      */
-    public function permissions(){
+    public function permissions()
+    {
         $permissions = $this->permissions->check(
             config('install.permissions')
         );
-        $view=CrudTrait::getView();//'install::permissions'
+        $view=ThemeService::getView();//'install::permissions'
         return view($view, compact('permissions'));
     }
 }

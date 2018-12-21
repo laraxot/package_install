@@ -9,5 +9,6 @@ use Carbon\Carbon;
 //------ ext models---
 use Xot\Sigma\Models\Anag;
 
-class Install extends Model{
+class Install extends Model
+{
 }

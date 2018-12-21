@@ -7,9 +7,11 @@ use XRA\Install\Helpers\RequirementsChecker;
 
 //--------   TRAITS   ---------------
 use XRA\Extend\Traits\CrudSimpleTrait as CrudTrait;
+//--- services
+use XRA\Extend\Services\ThemeService;
 
-
-class RequirementsController extends Controller{
+class RequirementsController extends Controller
+{
     /**
      * @var RequirementsChecker
      */
@@ -28,15 +30,15 @@ class RequirementsController extends Controller{
      *
      * @return \Illuminate\View\View
      */
-    public function requirements(){
-        
+    public function requirements()
+    {
         $phpSupportInfo = $this->requirements->checkPHPversion(
             config('install.core.minPhpVersion')
         );
         $requirements = $this->requirements->check(
             config('install.requirements')
         );
-        $view=CrudTrait::getView(); //'install::requirements'
+        $view=ThemeService::getView(); //'install::requirements'
         return view($view, compact('requirements', 'phpSupportInfo'));
     }
 }
