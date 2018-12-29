@@ -132,6 +132,8 @@ $base_path=str_replace('\\', '\\\\', $base_path);
 						<button  	onclick="callComposer('update')" 		class="composer btn btn-success disabled">update</button>
 						<button   	onclick="callComposer('dump-autoload')" class="composer btn btn-success disabled">dump-autoload</button>
 						<button    	onclick="callComposer('show')" 			class="composer btn btn-success disabled">show</button>
+						<button    	onclick="callComposer('geoip:update')" 			class="composer btn btn-success disabled">geoip:update</button>
+						
 					</fieldset>
 					<hr/>
 					<fieldset>
