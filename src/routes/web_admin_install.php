@@ -1,6 +1,6 @@
 <?php
 
-use XRA\Extend\Library\XOT;
+use XRA\Extend\Traits\RouteTrait;
 
 $namespace=$this->getNamespace().'\Controllers'.'\Admin';
 $pack= class_basename($this->getNamespace());
@@ -20,5 +20,5 @@ $areas_prgs=[
 ];
 
 Route::group(['prefix' => 'admin','middleware' => ['web','auth'],'namespace'=>$namespace], function () use ($areas_prgs) {
-    XOT::dynamic_route($areas_prgs);
+    RouteTrait::dynamic_route($areas_prgs);
 });
