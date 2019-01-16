@@ -1,8 +1,9 @@
 <?php
 
-return [
 
-    /**
+
+return [
+    /*
      *
      * Shared translations.
      *
@@ -10,19 +11,17 @@ return [
     'title' => 'Laravel Instalator',
     'next' => 'Następny krok',
 
-
-    /**
+    /*
      *
      * Home page translations.
      *
      */
     'welcome' => [
-        'title'   => 'Instalacja Laravel',
+        'title' => 'Instalacja Laravel',
         'message' => 'Witaj w kreatorze instalacji.',
     ],
 
-
-    /**
+    /*
      *
      * Requirements page translations.
      *
@@ -31,8 +30,7 @@ return [
         'title' => 'Wymagania systemowe ',
     ],
 
-
-    /**
+    /*
      *
      * Permissions page translations.
      *
@@ -41,8 +39,7 @@ return [
         'title' => 'Uprawnienia',
     ],
 
-
-    /**
+    /*
      *
      * Environment page translations.
      *
@@ -54,8 +51,7 @@ return [
         'errors' => 'Nie można zapisać pliku .env, Proszę utworzyć go ręcznie.',
     ],
 
-
-    /**
+    /*
      *
      * Final page translations.
      *

@@ -1,8 +1,9 @@
 <?php
 
-return [
 
-    /**
+
+return [
+    /*
      *
      * Shared translations.
      *
@@ -15,19 +16,19 @@ return [
         'errorTitle' => 'Terjadi galat sebagai berikut:',
     ],
 
-    /**
+    /*
      *
      * Home page translations.
      *
      */
     'welcome' => [
         'templateTitle' => 'Selamat Datang',
-        'title'   => 'Laravel Installer',
+        'title' => 'Laravel Installer',
         'message' => 'Instalasi Mudah dan Persiapan Aplikasi',
-        'next'    => 'Cek Kebutuhan',
+        'next' => 'Cek Kebutuhan',
     ],
 
-    /**
+    /*
      *
      * Requirements page translations.
      *
@@ -35,10 +36,10 @@ return [
     'requirements' => [
         'templateTitle' => 'Langkah 1 | Kebutuhan Server',
         'title' => 'Kebutuhan Server',
-        'next'    => 'Cek Hak Akses',
+        'next' => 'Cek Hak Akses',
     ],
 
-    /**
+    /*
      *
      * Permissions page translations.
      *
@@ -49,7 +50,7 @@ return [
         'next' => 'Konfigurasi Lingkungan',
     ],
 
-    /**
+    /*
      *
      * Environment page translations.
      *
@@ -68,7 +69,7 @@ return [
             'tabs' => [
                 'environment' => 'Lingkungan',
                 'database' => 'Basis Data',
-                'application' => 'Aplikasi'
+                'application' => 'Aplikasi',
             ],
             'form' => [
                 'name_required' => 'Lingkungan aplikasi harus ditetapkan',
@@ -169,7 +170,7 @@ return [
 
     'install' => 'Pasang',
 
-    /**
+    /*
      *
      * Installed Log translations.
      *
@@ -178,7 +179,7 @@ return [
         'success_log_message' => 'Laravel Installer berhasil DIPASANG pada ',
     ],
 
-    /**
+    /*
      *
      * Final page translations.
      *
@@ -194,41 +195,41 @@ return [
         'exit' => 'Klik disini untuk keluar',
     ],
 
-    /**
+    /*
      *
      * Update specific translations
      *
      */
     'updater' => [
-        /**
+        /*
          *
          * Shared translations.
          *
          */
         'title' => 'Laravel Updater',
 
-        /**
+        /*
          *
          * Welcome page translations for update feature.
          *
          */
         'welcome' => [
-            'title'   => 'Selamat Datang di App Updater',
+            'title' => 'Selamat Datang di App Updater',
             'message' => 'Selamat Datang di update wizard.',
         ],
 
-        /**
+        /*
          *
          * Welcome page translations for update feature.
          *
          */
         'overview' => [
-            'title'   => 'Tinjauan',
+            'title' => 'Tinjauan',
             'message' => 'Ada 1 pembaruan.|Ada :number pembaruan.',
-            'install_updates' => "Pasang Pembaruan"
+            'install_updates' => 'Pasang Pembaruan',
         ],
 
-        /**
+        /*
          *
          * Final page translations.
          *

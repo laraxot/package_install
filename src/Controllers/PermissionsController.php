@@ -1,18 +1,17 @@
 <?php
 
+
+
 namespace XRA\Install\Controllers;
 
 use Illuminate\Routing\Controller;
-use XRA\Install\Helpers\PermissionsChecker;
-
-//--------   TRAITS   ---------------
-use XRA\Extend\Traits\CrudSimpleTrait as CrudTrait;
-//--- services
 use XRA\Extend\Services\ThemeService;
+//--------   TRAITS   ---------------
+//--- services
+use XRA\Install\Helpers\PermissionsChecker;
 
 class PermissionsController extends Controller
 {
-
     /**
      * @var PermissionsChecker
      */
@@ -36,7 +35,7 @@ class PermissionsController extends Controller
         $permissions = $this->permissions->check(
             config('install.permissions')
         );
-        $view=ThemeService::getView();//'install::permissions'
-        return view($view, compact('permissions'));
+        $view = ThemeService::getView(); //'install::permissions'
+        return view($view, \compact('permissions'));
     }
 }

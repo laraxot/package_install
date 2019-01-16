@@ -1,14 +1,14 @@
 <?php
 
+
+
 namespace XRA\Install\Controllers;
 
 use Illuminate\Routing\Controller;
-use XRA\Install\Helpers\RequirementsChecker;
-
-//--------   TRAITS   ---------------
-use XRA\Extend\Traits\CrudSimpleTrait as CrudTrait;
-//--- services
 use XRA\Extend\Services\ThemeService;
+//--------   TRAITS   ---------------
+//--- services
+use XRA\Install\Helpers\RequirementsChecker;
 
 class RequirementsController extends Controller
 {
@@ -38,7 +38,7 @@ class RequirementsController extends Controller
         $requirements = $this->requirements->check(
             config('install.requirements')
         );
-        $view=ThemeService::getView(); //'install::requirements'
-        return view($view, compact('requirements', 'phpSupportInfo'));
+        $view = ThemeService::getView(); //'install::requirements'
+        return view($view, \compact('requirements', 'phpSupportInfo'));
     }
 }

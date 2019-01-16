@@ -1,13 +1,14 @@
 <?php
 
+
+
 namespace XRA\Install\Controllers;
 
 use Illuminate\Routing\Controller;
-use XRA\Install\Helpers\InstalledFileManager;
 use XRA\Install\Helpers\DatabaseManager;
+use XRA\Install\Helpers\InstalledFileManager;
 
 //--------   TRAITS   ---------------
-use XRA\Extend\Traits\CrudSimpleTrait as CrudTrait;
 
 class UpdateController extends Controller
 {
@@ -33,7 +34,7 @@ class UpdateController extends Controller
         $migrations = $this->getMigrations();
         $dbMigrations = $this->getExecutedMigrations();
 
-        return view('install::update.overview', ['numberOfUpdatesPending' => count($migrations) - count($dbMigrations)]);
+        return view('install::update.overview', ['numberOfUpdatesPending' => \count($migrations) - \count($dbMigrations)]);
     }
 
     /**
@@ -43,7 +44,7 @@ class UpdateController extends Controller
      */
     public function database()
     {
-        $databaseManager = new DatabaseManager;
+        $databaseManager = new DatabaseManager();
         $response = $databaseManager->migrateAndSeed();
 
         return redirect()->route('LaravelUpdater::final')
@@ -54,6 +55,7 @@ class UpdateController extends Controller
      * Update installed file and display finished view.
      *
      * @param InstalledFileManager $fileManager
+     *
      * @return \Illuminate\View\View
      */
     public function finish(InstalledFileManager $fileManager)

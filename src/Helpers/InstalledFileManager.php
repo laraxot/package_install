@@ -1,5 +1,7 @@
 <?php
 
+
+
 namespace XRA\Install\Helpers;
 
 class InstalledFileManager
@@ -12,14 +14,15 @@ class InstalledFileManager
     public function create()
     {
         $installedLogFile = storage_path('installed');
-        $dateStamp = date("Y/m/d h:i:sa");
-        if (!file_exists($installedLogFile)) {
-            $message = trans('install::messages.installed.success_log_message') . $dateStamp . "\n";
-            file_put_contents($installedLogFile, $message);
+        $dateStamp = \date('Y/m/d h:i:sa');
+        if (!\file_exists($installedLogFile)) {
+            $message = trans('install::messages.installed.success_log_message').$dateStamp."\n";
+            \file_put_contents($installedLogFile, $message);
         } else {
-            $message = trans('install::messages.updater.log.success_message') . $dateStamp;
-            file_put_contents($installedLogFile, $message.PHP_EOL, FILE_APPEND | LOCK_EX);
+            $message = trans('install::messages.updater.log.success_message').$dateStamp;
+            \file_put_contents($installedLogFile, $message.PHP_EOL, FILE_APPEND | LOCK_EX);
         }
+
         return $message;
     }
 

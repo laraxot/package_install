@@ -1,11 +1,13 @@
 <?php
 
+
+
 namespace XRA\Install\Events;
 
+use Illuminate\Broadcasting\InteractsWithSockets;
+use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Http\Request;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Foundation\Events\Dispatchable;
-use Illuminate\Broadcasting\InteractsWithSockets;
 
 class EnvironmentSaved
 {
@@ -17,7 +19,6 @@ class EnvironmentSaved
      * Create a new event instance.
      *
      * @param Request $request
-     * @return void
      */
     public function __construct(Request $request)
     {

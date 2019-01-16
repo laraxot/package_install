@@ -1,12 +1,13 @@
 <?php
 
+
+
 namespace XRA\Install\Controllers;
 
 use Illuminate\Routing\Controller;
 use XRA\Install\Helpers\DatabaseManager;
 
 //--------   TRAITS   ---------------
-use XRA\Extend\Traits\CrudSimpleTrait as CrudTrait;
 
 class DatabaseController extends Controller
 {
@@ -31,6 +32,7 @@ class DatabaseController extends Controller
     public function database()
     {
         $response = $this->databaseManager->migrateAndSeed();
+
         return redirect()->route('LaravelInstaller::final')
                          ->with(['message' => $response]);
     }

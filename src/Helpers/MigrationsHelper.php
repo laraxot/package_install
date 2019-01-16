@@ -1,21 +1,23 @@
 <?php
 
+
+
 namespace XRA\Install\Helpers;
 
 use Illuminate\Support\Facades\DB;
 
 trait MigrationsHelper
 {
-
     /**
-     * Get the migrations in /database/migrations
+     * Get the migrations in /database/migrations.
      *
      * @return array Array of migrations name, empty if no migrations are existing
      */
     public function getMigrations()
     {
-        $migrations = glob(database_path().DIRECTORY_SEPARATOR.'migrations'.DIRECTORY_SEPARATOR.'*.php');
-        return str_replace('.php', '', $migrations);
+        $migrations = \glob(database_path().\DIRECTORY_SEPARATOR.'migrations'.\DIRECTORY_SEPARATOR.'*.php');
+
+        return \str_replace('.php', '', $migrations);
     }
 
     /**

@@ -1,8 +1,8 @@
-<?php
+<?php 
 //https://github.com/CurosMJ/NoConsoleComposer
 include 'password.php';
-$base_path=realpath('../../laravel');
-$base_path=str_replace('\\', '\\\\', $base_path);
+$base_path = \realpath('../../laravel');
+$base_path = \str_replace('\\', '\\\\', $base_path);
 ?>
 <!DOCTYPE html>
 <html>

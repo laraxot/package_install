@@ -1,10 +1,12 @@
 <?php
 
+
+
 namespace XRA\Install\Events;
 
-use Illuminate\Queue\SerializesModels;
-use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
+use Illuminate\Foundation\Events\Dispatchable;
+use Illuminate\Queue\SerializesModels;
 
 class LaravelInstallerFinished
 {
@@ -12,11 +14,8 @@ class LaravelInstallerFinished
 
     /**
      * Create a new event instance.
-     *
-     * @return void
      */
     public function __construct()
     {
-        //
     }
 }

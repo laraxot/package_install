@@ -1,8 +1,9 @@
 <?php
 
-return [
 
-    /**
+
+return [
+    /*
      *
      * Shared translations.
      *
@@ -11,19 +12,17 @@ return [
     'next' => 'Nächster Schritt',
     'finish' => 'Installieren',
 
-
-    /**
+    /*
      *
      * Home page translations.
      *
      */
     'welcome' => [
-        'title'   => 'Willkommen zum Installer',
+        'title' => 'Willkommen zum Installer',
         'message' => 'Willkommen zum Laravel Installationsassistent.',
     ],
 
-
-    /**
+    /*
      *
      * Requirements page translations.
      *
@@ -32,8 +31,7 @@ return [
         'title' => 'Vorraussetzungen',
     ],
 
-
-    /**
+    /*
      *
      * Permissions page translations.
      *
@@ -42,8 +40,7 @@ return [
         'title' => 'Berechtigungen',
     ],
 
-
-    /**
+    /*
      *
      * Environment page translations.
      *
@@ -55,8 +52,7 @@ return [
         'errors' => 'Ihre .env Konfiguration konnte nicht gespeichert werden, Bitte erstellen Sie diese Manuell.',
     ],
 
-
-    /**
+    /*
      *
      * Final page translations.
      *

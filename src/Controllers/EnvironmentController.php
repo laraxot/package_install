@@ -1,16 +1,17 @@
 <?php
 
+
+
 namespace XRA\Install\Controllers;
 
-use Illuminate\Routing\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 use Illuminate\Routing\Redirector;
-use XRA\Install\Helpers\EnvironmentManager;
-use XRA\Install\Events\EnvironmentSaved;
 use Validator;
+use XRA\Install\Events\EnvironmentSaved;
+use XRA\Install\Helpers\EnvironmentManager;
 
 //--------   TRAITS   ---------------
-use XRA\Extend\Traits\CrudSimpleTrait as CrudTrait;
 
 class EnvironmentController extends Controller
 {
@@ -45,7 +46,8 @@ class EnvironmentController extends Controller
     public function environmentWizard()
     {
         $envConfig = $this->EnvironmentManager->getEnvContent();
-        return view('install::environment-wizard', compact('envConfig'));
+
+        return view('install::environment-wizard', \compact('envConfig'));
     }
 
     /**
@@ -56,20 +58,23 @@ class EnvironmentController extends Controller
     public function environmentClassic()
     {
         $envConfig = $this->EnvironmentManager->getEnvContent();
-        return view('install::environment-classic', compact('envConfig'));
+
+        return view('install::environment-classic', \compact('envConfig'));
     }
 
     /**
      * Processes the newly saved environment configuration (Classic).
      *
-     * @param Request $input
+     * @param Request    $input
      * @param Redirector $redirect
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function saveClassic(Request $input, Redirector $redirect)
     {
         $message = $this->EnvironmentManager->saveFileClassic($input);
         event(new EnvironmentSaved($input));
+
         return $redirect->route('LaravelInstaller::environmentClassic')
                         ->with(['message' => $message]);
     }
@@ -77,8 +82,9 @@ class EnvironmentController extends Controller
     /**
      * Processes the newly saved environment configuration (Form Wizard).
      *
-     * @param Request $request
+     * @param Request    $request
      * @param Redirector $redirect
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function saveWizard(Request $request, Redirector $redirect)
@@ -91,7 +97,8 @@ class EnvironmentController extends Controller
 
         if ($validator->fails()) {
             $errors = $validator->errors();
-            return view('install::environment-wizard', compact('errors', 'envConfig'));
+
+            return view('install::environment-wizard', \compact('errors', 'envConfig'));
         }
 
         $results = $this->EnvironmentManager->saveFileWizard($request);

@@ -1,5 +1,7 @@
 <?php
 
+
+
 namespace XRA\Install\Helpers;
 
 use Exception;
@@ -15,7 +17,7 @@ class FinalInstallManager
      */
     public function runFinal()
     {
-        $outputLog = new BufferedOutput;
+        $outputLog = new BufferedOutput();
 
         $this->generateKey($outputLog);
         $this->publishVendorAssets($outputLog);
@@ -27,13 +29,14 @@ class FinalInstallManager
      * Generate New Application Key.
      *
      * @param \Symfony\Component\Console\Output\BufferedOutput $outputLog
+     *
      * @return \Symfony\Component\Console\Output\BufferedOutput|array
      */
     private static function generateKey(BufferedOutput $outputLog)
     {
         try {
             if (config('install.final.key')) {
-                Artisan::call('key:generate', ["--force"=> true], $outputLog);
+                Artisan::call('key:generate', ['--force' => true], $outputLog);
             }
         } catch (Exception $e) {
             return static::response($e->getMessage(), $outputLog);
@@ -46,6 +49,7 @@ class FinalInstallManager
      * Publish vendor assets.
      *
      * @param \Symfony\Component\Console\Output\BufferedOutput $outputLog
+     *
      * @return \Symfony\Component\Console\Output\BufferedOutput|array
      */
     private static function publishVendorAssets(BufferedOutput $outputLog)
@@ -66,6 +70,7 @@ class FinalInstallManager
      *
      * @param $message
      * @param \Symfony\Component\Console\Output\BufferedOutput $outputLog
+     *
      * @return array
      */
     private static function response($message, BufferedOutput $outputLog)
@@ -73,7 +78,7 @@ class FinalInstallManager
         return [
             'status' => 'error',
             'message' => $message,
-            'dbOutputLog' => $outputLog->fetch()
+            'dbOutputLog' => $outputLog->fetch(),
         ];
     }
 }

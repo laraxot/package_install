@@ -1,5 +1,7 @@
 <?php
 
+
+
 namespace XRA\Install\Middleware;
 
 use Closure;
@@ -11,16 +13,17 @@ class canUpdate
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
+     * @param \Illuminate\Http\Request $request
+     * @param \Closure                 $next
+     *
      * @return mixed
      */
     public function handle($request, Closure $next)
     {
-        $updateEnabled = filter_var(config('install.updaterEnabled'), FILTER_VALIDATE_BOOLEAN);
+        $updateEnabled = \filter_var(config('install.updaterEnabled'), FILTER_VALIDATE_BOOLEAN);
         switch ($updateEnabled) {
             case true:
-                $canInstall = new canInstall;
+                $canInstall = new canInstall();
 
                 // if the application has not been installed,
                 // redirect to the installer
@@ -54,7 +57,7 @@ class canUpdate
 
         // If the count of migrations and dbMigrations is equal,
         // then the update as already been updated.
-        if (count($migrations) == count($dbMigrations)) {
+        if (\count($migrations) == \count($dbMigrations)) {
             return true;
         }
 

@@ -1,17 +1,16 @@
 <?php
 
+
+
 namespace XRA\Install\Controllers;
 
 use Illuminate\Routing\Controller;
-
 //--------   TRAITS   ---------------
-use XRA\Extend\Traits\CrudSimpleTrait as CrudTrait;
 //--- services
 use XRA\Extend\Services\ThemeService;
 
 class WelcomeController extends Controller
 {
-
     /**
      * Display the installer welcome page.
      *
@@ -19,7 +18,8 @@ class WelcomeController extends Controller
      */
     public function welcome()
     {
-        $view=ThemeService::getView();
+        $view = ThemeService::getView();
+
         return view($view);
     }
 }

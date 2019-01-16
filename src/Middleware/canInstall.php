@@ -1,9 +1,10 @@
 <?php
 
+
+
 namespace XRA\Install\Middleware;
 
 use Closure;
-use DB;
 use Redirect;
 
 class canInstall
@@ -11,8 +12,9 @@ class canInstall
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
+     * @param \Illuminate\Http\Request $request
+     * @param \Closure                 $next
+     *
      * @return \Illuminate\Http\RedirectResponse|mixed
      */
     public function handle($request, Closure $next)
@@ -21,10 +23,10 @@ class canInstall
             $installedRedirect = config('install.installedAlreadyAction');
 
             switch ($installedRedirect) {
-
                 case 'route':
                     $routeName = config('install.installed.redirectOptions.route.name');
                     $data = config('install.installed.redirectOptions.route.message');
+
                     return redirect()->route($routeName)->with(['data' => $data]);
                     break;
 
@@ -44,6 +46,7 @@ class canInstall
                     break;
             }
         }
+
         return $next($request);
     }
 
@@ -54,6 +57,6 @@ class canInstall
      */
     public function alreadyInstalled()
     {
-        return file_exists(storage_path('installed'));
+        return \file_exists(storage_path('installed'));
     }
 }

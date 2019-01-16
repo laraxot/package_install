@@ -1,5 +1,7 @@
 <?php
 
+
+
 namespace XRA\Install\Helpers;
 
 use Exception;
@@ -18,7 +20,7 @@ class DatabaseManager
      */
     public function migrateAndSeed()
     {
-        $outputLog = new BufferedOutput;
+        $outputLog = new BufferedOutput();
 
         $this->sqlite($outputLog);
 
@@ -29,12 +31,13 @@ class DatabaseManager
      * Run the migration and call the seeder.
      *
      * @param \Symfony\Component\Console\Output\BufferedOutput $outputLog
+     *
      * @return array
      */
     private function migrate(BufferedOutput $outputLog)
     {
         try {
-            Artisan::call('migrate', ["--force"=> true], $outputLog);
+            Artisan::call('migrate', ['--force' => true], $outputLog);
         } catch (Exception $e) {
             return $this->response($e->getMessage(), 'error', $outputLog);
         }
@@ -46,6 +49,7 @@ class DatabaseManager
      * Seed the database.
      *
      * @param \Symfony\Component\Console\Output\BufferedOutput $outputLog
+     *
      * @return array
      */
     private function seed(BufferedOutput $outputLog)
@@ -62,9 +66,10 @@ class DatabaseManager
     /**
      * Return a formatted error messages.
      *
-     * @param string $message
-     * @param string $status
+     * @param string                                           $message
+     * @param string                                           $status
      * @param \Symfony\Component\Console\Output\BufferedOutput $outputLog
+     *
      * @return array
      */
     private function response($message, $status = 'danger', BufferedOutput $outputLog)
@@ -72,7 +77,7 @@ class DatabaseManager
         return [
             'status' => $status,
             'message' => $message,
-            'dbOutputLog' => $outputLog->fetch()
+            'dbOutputLog' => $outputLog->fetch(),
         ];
     }
 
@@ -85,11 +90,11 @@ class DatabaseManager
     {
         if (DB::connection() instanceof SQLiteConnection) {
             $database = DB::connection()->getDatabaseName();
-            if (!file_exists($database)) {
-                touch($database);
+            if (!\file_exists($database)) {
+                \touch($database);
                 DB::reconnect(Config::get('database.default'));
             }
-            $outputLog->write('Using SqlLite database: ' . $database, 1);
+            $outputLog->write('Using SqlLite database: '.$database, 1);
         }
     }
 }
