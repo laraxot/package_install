@@ -1,7 +1,4 @@
 <?php
-
-
-
 namespace XRA\Install\Controllers;
 
 use Illuminate\Routing\Controller;
