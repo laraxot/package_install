@@ -11,9 +11,12 @@ class InstallServiceProvider extends ServiceProvider
 {
     use ServiceProviderTrait;
 
+    protected $defer = true;
+
     /**
      * Register the application services.
      */
+    /*
     public function register()
     {
         foreach (\glob(__DIR__.'/Helpers/*.php') as $filename) {
@@ -21,4 +24,5 @@ class InstallServiceProvider extends ServiceProvider
             require_once $filename;
         }
     }
+    */
 }
