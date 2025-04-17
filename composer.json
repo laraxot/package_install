@@ -1,0 +1,7 @@
+{
+  "name": "XRA/Install",
+  "description": "install our cms",
+  "type": "project",
+  "minimum-stability": "dev",
+  "require": {}
+}
